@@ -16,9 +16,9 @@
 ----------------------------------
 ------Mod by Trevor Thompson------
 ----------------------------------
---Current Revision: Release 1.0.0-
+--Current Revision: Release 1.0.1-
 ----------------------------------
--------------3/3/2020-------------
+-------------1/4/2021-------------
 ----------------------------------
 
 
@@ -1001,8 +1001,8 @@ return {
 		[0x7EF37B] = {name="Half Magic", kind="trigger", writeTrigger=zeldaLocalBitTrigger("0x7EF37B",{"Half Magic"})},
 		[0x7EF36B] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF36B", {"a Heart Piece"})}, --Heart Pieces
 		[0x7EF36C] = {name="a Heart Container", kind="trigger", writeTrigger=zeldaLocalItemTrigger("0x7EF36C",{"a Heart Container"})},
-		[0x7EF360] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF360", {})}, -- Rupee byte 1
-		[0x7EF361] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF361",{})}, -- Rupee byte 2
+		--[0x7EF360] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF360", {})}, -- Rupee byte 1 -- Disabled due to errors
+		--[0x7EF361] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF361",{})}, -- Rupee byte 2 -- Disabled due to errors
 		[0x7EF343] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF343",{})}, -- Bombs
 		[0x7EF377] = {kind="trigger", writeTrigger=zeldaLocalBottleTrigger("0x7EF377",{})}, -- Arrows
 		---
@@ -1060,8 +1060,8 @@ return {
 		[0x7EF37B+ZSTORAGE] = {name="Half Magic", kind="trigger", writeTrigger=zeldaForeignItemTrigger("0x7EF37B",{"Half Magic"})},
 		[0x7EF36B+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF36B",{"Heart Piece"})}, --Heart Pieces
 		[0x7EF36C+ZSTORAGE] = {name="a Heart Container", kind="trigger", writeTrigger=zeldaForeignItemTrigger("0x7EF36C",{"a Heart Container"})},
-		[0x7EF360+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF360",{})}, -- Rupee byte 1
-		[0x7EF361+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF361",{})}, -- Rupee byte 2
+		--[0x7EF360+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF360",{})}, -- Rupee byte 1 -- Disabled due to errors
+		--[0x7EF361+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF361",{})}, -- Rupee byte 2 -- Disabled due to errors
 		[0x7EF343+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF343",{})}, -- Bombs
 		[0x7EF377+ZSTORAGE] = {kind="trigger", writeTrigger=zeldaForeignBottleTrigger("0x7EF377",{})}, -- Arrows
 		[0x7EF38C+ZSTORAGE] = {kind="trigger",   writeTrigger=zeldaForeignBitTrigger("0x7EF38C",{})}, --Extra swap equip
@@ -2105,7 +2105,7 @@ return {
 			local value = payload[2]
 			local itemName = payload[3]
 			local currentGame = memoryRead(0xA173FE)
-			if currentGame == 0 and address ~= nil then
+			if currentGame == 0 then
 				if noSend == true and backup[address] ~= nil then
 					--message("wrote " .. value .. " at " .. address .. ";  previous was " .. memoryRead(address))
 					backup[address] = {value, backup[address][2], backup[address][3], backup[address][4]}
@@ -2134,7 +2134,7 @@ return {
 			local address = tonumber(string.sub(payload, 1, 8), 16)
 			local value = tonumber(string.sub(payload, 9),10)
 			local currentGame = memoryRead(0xA173FE)
-			if currentGame == 0 and address ~= nil then
+			if currentGame == 0 then
 				if noSend == true and backup[address] ~= nil then
 					--message("wrote " .. value .. " at " .. address .. ";  previous was " .. memoryRead(address))
 					backup[address] = {value, backup[address][2], backup[address][3], backup[address][4]}
@@ -2164,7 +2164,7 @@ return {
 			local address = tonumber(string.sub(payload, 1, 8), 16)
 			local value = tonumber(string.sub(payload, 9),10)
 			local currentGame = memoryRead(0xA173FE)
-			if currentGame == 0 and address ~= nil then
+			if currentGame == 0 then
 				if noSend == true and backup[address] ~= nil then
 					--message("wrote " .. value .. " at " .. address .. ";  previous was " .. memoryRead(address))
 					backup[address] = {value, backup[address][2], backup[address][3], backup[address][4]}
