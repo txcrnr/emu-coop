@@ -1,6 +1,6 @@
 # emu-coop
 
-Contact txcrnr#9668 on Discord or @txcrnr on twitter if you run into any issues or have feedback on the Z3M3 Randomizer co-op mode script.
+Contact t0xicrunner#4114 on Discord if you run into any issues or have feedback on the Z3M3 Randomizer co-op mode script.
 
 
 This directory contains some Lua scripts that, when loaded by a compliant emulator such as snes9x-rr or FCEUX, can synchronize emulator state over the internet (allowing "cooperative" playthroughs of single-player games).
